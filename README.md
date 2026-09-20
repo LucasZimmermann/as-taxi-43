@@ -43,41 +43,43 @@ Issues de l'affiche de l'entreprise et de la fiche Google :
 | Conventionnement | Conventionné CPAM |
 | Amplitude | 7j/7, 24h/24 |
 | Note Google | 5,0 sur 84 avis |
+| Exploitant | Hamed Arbib, entrepreneur individuel |
+| Siège social | 3 rue de Chirel, lotissement Coste Deferne, 43000 Le Puy-en-Velay |
+| SIREN | 493 529 523 |
+| SIRET du siège | 493 529 523 00026 |
+| TVA intracommunautaire | FR78 493 529 523 |
+| Code APE | 4932Z, transports de voyageurs par taxis |
+| Immatriculation | 2 janvier 2007 |
 | Prestations Google | limousines, assistance, taxi 7j/7, taxi de nuit, longue distance, transfert gare, transfert aéroport |
 
 ## Ce qu'il reste à compléter
 
-1. **SIREN / SIRET manquants** (`mentions-legales.html`, deux `[crochets]`).
-   Le document transmis était un bulletin de salaire de l'Hôtel Le Regina : le SIRET qui y
-   figurait est celui de l'hôtel, pas celui de l'entreprise de taxi. Rien n'en a été repris.
-   Le bon numéro se trouve sur un extrait Kbis, un avis de situation INSEE
-   (avis-situation-sirene.insee.fr) ou une facture de l'entreprise.
-2. **Nom du gérant** (`mentions-legales.html`, responsable de la publication).
-3. **URL canonique** : `https://lucaszimmermann.github.io/as-taxi-43/` apparaît dans
+1. **URL canonique** : `https://lucaszimmermann.github.io/as-taxi-43/` apparaît dans
    `index.html` (`canonical`, `og:url`, `og:image`, JSON-LD), `robots.txt` et `sitemap.xml`.
    À remplacer partout le jour où un domaine est acheté.
-4. **Réseaux sociaux** : l'affiche annonce Facebook, Snapchat et Instagram mais sans identifiant.
-   Fournir les trois URL pour les ajouter au pied de page et au JSON-LD (`sameAs`).
-5. **Distances et durées** du tableau des destinations : estimations, à confirmer par le chauffeur.
-6. **Modèle du véhicule** : la page dit « berline break » sans nommer la marque, l'affiche
-   montrant une Mercedes et les photos Google une Kia. À préciser si un seul véhicule circule.
+2. **Réseaux sociaux** : l'affiche annonce Facebook, Snapchat et Instagram mais sans
+   identifiant. Fournir les trois URL pour les ajouter au pied de page et au JSON-LD (`sameAs`).
+3. **Distances et durées** du tableau des destinations : estimations, à confirmer par le chauffeur.
+4. **Modèle du véhicule** : la page dit « berline break » sans nommer la marque. À préciser
+   si un seul véhicule circule.
 
 ## La photo du hero
 
-`assets/hero-le-puy.jpg` est un recadrage de l'affiche de l'entreprise : la partie photo
-seule, sans le texte ni le logo. La source ne fait que 616 px de large, elle a donc été
-agrandie puis ré-accentuée. Le rendu est bon à la taille où elle s'affiche, mais si le
-fichier d'origine existe (celui utilisé pour fabriquer l'affiche), le remplacer donnera un
-résultat plus net :
+`assets/hero-le-puy.jpg` et ses deux déclinaisons viennent du visuel fourni par le client
+(1672 × 941), recadré en pleine largeur derrière le texte. C'est une **image de synthèse**,
+pas une photographie du véhicule prise sur place : les mentions légales le précisent, et le
+texte alternatif décrit la scène sans la présenter comme un reportage.
 
-```bash
-# remplacer les deux tailles, mêmes noms de fichiers
-assets/hero-le-puy.jpg       # 1920 px de large
-assets/hero-le-puy-960.jpg   #  960 px de large, pour mobile
+Trois tailles sont servies par `srcset`, le navigateur choisit :
+
+```
+assets/hero-le-puy.jpg        2400 px   grands écrans et affichages retina
+assets/hero-le-puy-1440.jpg   1440 px   desktop courant
+assets/hero-le-puy-960.jpg     900 px   mobile
 ```
 
-Le texte alternatif de l'image décrit la scène pour les lecteurs d'écran et le
-référencement, le mettre à jour si la photo change.
+Pour changer la photo, remplacer les trois fichiers en gardant les mêmes noms, puis mettre
+à jour le texte alternatif dans `index.html` et l'image de partage `assets/og.jpg`.
 
 ## Structure
 
@@ -86,7 +88,7 @@ index.html            page principale
 mentions-legales.html page légale
 styles.css            toute la mise en forme
 script.js             liens WhatsApp et composition du message
-assets/hero-le-puy*.jpg  photo du hero (deux tailles)
+assets/hero-le-puy*.jpg  photo du hero (trois tailles)
 assets/og.jpg         image de partage 1200×630
 assets/favicon.svg    icône
 robots.txt sitemap.xml

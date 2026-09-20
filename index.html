@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..800;1,62..125,300..800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/hero-le-puy.jpg" imagesrcset="assets/hero-le-puy-960.jpg 960w, assets/hero-le-puy.jpg 1920w" imagesizes="100vw">
+<link rel="preload" as="image" href="assets/hero-le-puy-1440.jpg" imagesrcset="assets/hero-le-puy-960.jpg 900w, assets/hero-le-puy-1440.jpg 1440w, assets/hero-le-puy.jpg 2400w" imagesizes="100vw">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -55,33 +55,37 @@
 
   <!-- ══ Hero ══ -->
   <section class="hero">
+    <img class="hero__photo"
+         src="assets/hero-le-puy-1440.jpg"
+         srcset="assets/hero-le-puy-960.jpg 900w, assets/hero-le-puy-1440.jpg 1440w, assets/hero-le-puy.jpg 2400w"
+         sizes="100vw"
+         width="2400" height="1351"
+         fetchpriority="high" decoding="async"
+         alt="Un taxi break blanc aux couleurs de Taxi AS stationné face au Puy-en-Velay illuminé au crépuscule, la statue Notre-Dame de France et la chapelle Saint-Michel d'Aiguilhe dominant la ville">
 
     <div class="hero__contenu">
-      <h1>Le taxi n°&nbsp;5 du<br>Puy-en-Velay.</h1>
-      <p class="hero__accroche">
-        Aéroports, gares, transport médical conventionné, longue distance.
-        Vous envoyez votre trajet sur WhatsApp, vous recevez le forfait et l'heure
-        de prise en charge.
-      </p>
-      <div class="hero__actions">
-        <a class="bouton bouton--whats bouton--grand" data-wa="Bonjour, je souhaite réserver un taxi au départ du Puy-en-Velay." href="https://wa.me/33664109661">
-          <svg class="ico-wa" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
-          Réserver sur WhatsApp
-        </a>
-        <a class="bouton bouton--clair bouton--grand" href="tel:+33664109661">Appeler le 06 64 10 96 61</a>
+      <div class="enveloppe">
+        <h1>Le taxi n°&nbsp;5 du<br>Puy-en-Velay.</h1>
+        <p class="hero__accroche">
+          Aéroports, gares, transport médical conventionné, longue distance.
+          Vous envoyez votre trajet sur WhatsApp, vous recevez le forfait et l'heure
+          de prise en charge.
+        </p>
+        <div class="hero__actions">
+          <a class="bouton bouton--whats bouton--grand" data-wa="Bonjour, je souhaite réserver un taxi au départ du Puy-en-Velay." href="https://wa.me/33664109661">
+            <svg class="ico-wa" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+            Réserver sur WhatsApp
+          </a>
+          <a class="bouton bouton--clair bouton--grand" href="tel:+33664109661">Appeler le 06 64 10 96 61</a>
+        </div>
+        <ul class="preuves">
+          <li><strong>5,0</strong> sur 84 avis Google</li>
+          <li>Conventionné CPAM</li>
+          <li>7j/7, 24h/24</li>
+          <li>Station place du Breuil</li>
+        </ul>
       </div>
-      <ul class="preuves">
-        <li><strong>5,0</strong> sur 84 avis Google</li>
-        <li>Conventionné CPAM</li>
-        <li>7j/7, 24h/24</li>
-        <li>Place du Breuil, Le Puy-en-Velay</li>
-      </ul>
     </div>
-
-    <picture class="hero__photo">
-      <source media="(max-width: 46rem)" srcset="assets/hero-le-puy-960.jpg">
-      <img src="assets/hero-le-puy.jpg" alt="Le taxi de Taxi AS stationné face au Puy-en-Velay illuminé à la tombée de la nuit, avec le rocher Saint-Michel d'Aiguilhe en arrière-plan" width="1920" height="1396" fetchpriority="high" decoding="async">
-    </picture>
   </section>
 
   <!-- ══ Garanties ══ -->
@@ -388,14 +392,19 @@
   "@context": "https://schema.org",
   "@type": "TaxiService",
   "name": "Taxi AS",
+  "legalName": "Hamed Arbib",
   "alternateName": "Taxi Le Puy-en-Velay n°5",
   "description": "Taxi artisan n°5 du Puy-en-Velay, place du Breuil. Conventionné CPAM. Transferts aéroport et gare, transport médical, longue distance, taxi de nuit, 7j/7 24h/24.",
   "telephone": "+33664109661",
   "email": "astaxi.lepuy5@gmail.com",
   "url": "https://lucaszimmermann.github.io/as-taxi-43/",
   "priceRange": "€€",
-  "image": "https://lucaszimmermann.github.io/as-taxi-43/assets/hero-le-puy.jpg",
+  "image": "https://lucaszimmermann.github.io/as-taxi-43/assets/og.jpg",
   "paymentAccepted": "Carte bancaire, espèces, virement",
+  "vatID": "FR78493529523",
+  "taxID": "49352952300026",
+  "foundingDate": "2007-01-02",
+  "founder": { "@type": "Person", "name": "Hamed Arbib" },
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Place du Breuil",

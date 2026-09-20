@@ -152,38 +152,43 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 62rem) { .bandeau__dispo { display: none; } .bandeau__grille { justify-content: space-between; } }
 @media (max-width: 34rem) { .bandeau__liens .bouton--whats { display: none; } }
 
-/* ── Hero : texte à gauche, photo qui déborde à droite ───── */
+/* ── Hero pleine largeur ─────────────────────────────────── */
 
 .hero {
+  position: relative;
+  isolation: isolate;
   background: var(--nuit);
   color: var(--craie);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 46%);
-  align-items: stretch;
-  gap: clamp(2rem, 4vw, 4.5rem);
-  padding-left: max(var(--marge), calc((100vw - var(--enveloppe)) / 2));
+  align-items: center;
+  min-height: clamp(32rem, 56vw, 45rem);
   overflow: hidden;
 }
-
-.hero__contenu { align-self: center; padding-block: clamp(3rem, 5.5vw, 4.75rem); }
-.hero__photo { position: relative; min-height: clamp(22rem, 46vw, 36rem); }
-.hero__photo img {
-  position: absolute; inset: 0;
+.hero__photo {
+  position: absolute; inset: 0; z-index: -2;
   width: 100%; height: 100%;
-  object-fit: cover; object-position: 50% 46%;
+  object-fit: cover; object-position: 62% 50%;
   display: block;
 }
-.hero__photo::after {
+.hero::after {
   content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, var(--nuit) 0%, rgba(14,27,24,.35) 14%, transparent 34%);
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(100deg,
+      rgba(8,16,14,.95) 0%,
+      rgba(8,16,14,.91) 28%,
+      rgba(8,16,14,.72) 48%,
+      rgba(8,16,14,.30) 68%,
+      rgba(8,16,14,.12) 100%),
+    linear-gradient(to top, rgba(8,16,14,.62) 0%, transparent 38%);
 }
 
+.hero__contenu { padding-block: clamp(3.5rem, 7vw, 5.5rem); width: 100%; }
 .hero h1 { color: var(--craie); max-width: 13ch; }
 .hero__accroche {
   font-size: clamp(1.05rem, 1rem + .4vw, 1.2rem);
-  max-width: 42ch;
-  color: color-mix(in srgb, var(--craie) 82%, transparent);
+  max-width: 38ch;
+  color: color-mix(in srgb, var(--craie) 84%, transparent);
   margin-bottom: 2rem;
 }
 .hero__actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 2.3rem; }
@@ -195,31 +200,40 @@ p:last-child { margin-bottom: 0; }
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: .7rem 1.8rem;
   font-size: .92rem;
-  color: color-mix(in srgb, var(--craie) 80%, transparent);
-  max-width: 30rem;
+  color: color-mix(in srgb, var(--craie) 82%, transparent);
+  max-width: 26rem;
 }
 .preuves li { display: flex; align-items: baseline; gap: .45rem; }
-@media (max-width: 26rem) { .preuves { grid-template-columns: 1fr; gap: .5rem; } }
 .preuves strong {
   font-variation-settings: 'wdth' 110; font-weight: 700;
   font-size: 1.1rem; color: var(--craie); letter-spacing: -.02em;
 }
 .preuves li:first-child strong { color: var(--lave-clair); }
 
+/* Sous 58rem le texte ne tient plus sur la partie sombre : la photo
+   passe au-dessus, en bandeau, et le texte reprend le fond nuit. */
 @media (max-width: 58rem) {
   .hero {
-    grid-template-columns: 1fr;
-    padding: 0 0 clamp(2.5rem, 7vw, 3.5rem);
-    gap: clamp(1.8rem, 5vw, 2.5rem);
+    display: block;
+    min-height: 0;
+    padding-bottom: clamp(2.5rem, 7vw, 3.5rem);
   }
-  .hero__photo { order: -1; min-height: 0; aspect-ratio: 4 / 3; max-height: 58svh; }
-  .hero__contenu { padding-block: 0; }
-  .hero__photo::after {
-    background: linear-gradient(to bottom, transparent 55%, rgba(14,27,24,.55) 82%, var(--nuit) 100%);
+  .hero__photo {
+    position: static;
+    height: auto; aspect-ratio: 16 / 10;
+    max-height: 56svh;
+    object-position: 66% 50%;
   }
-  .hero__contenu { padding-inline: var(--marge); }
+  .hero::after {
+    inset: auto 0 0 0; height: 42%;
+    background: linear-gradient(to top, var(--nuit) 34%, transparent 100%);
+    pointer-events: none;
+  }
+  .hero__contenu { padding-block: clamp(1.8rem, 6vw, 2.5rem) 0; position: relative; z-index: 1; }
   .hero h1 { max-width: 16ch; }
+  .hero__accroche { max-width: none; }
 }
+@media (max-width: 26rem) { .preuves { grid-template-columns: 1fr; gap: .5rem; } }
 
 /* ── Garanties sous le hero ──────────────────────────────── */
 
