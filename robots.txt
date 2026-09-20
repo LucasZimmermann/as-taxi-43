@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lucaszimmermann.github.io/as-taxi-43/sitemap.xml
