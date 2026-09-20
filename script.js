@@ -13,43 +13,6 @@ const habillerLiens = (racine = document) => {
   });
 };
 
-/* ── Fiche itinéraire : fait défiler les trajets les plus demandés ── */
-const TRAJETS = [
-  { lieu: 'Aéroport Lyon Saint-Exupéry', mesure: '≈ 150 km · 1 h 50' },
-  { lieu: 'Gare de Saint-Étienne Châteaucreux', mesure: '≈ 75 km · 1 h 05' },
-  { lieu: 'Aéroport Clermont-Ferrand Auvergne', mesure: '≈ 135 km · 1 h 45' },
-  { lieu: 'Gare de Lyon Part-Dieu', mesure: '≈ 135 km · 1 h 45' },
-  { lieu: 'CHU de Saint-Étienne', mesure: '≈ 80 km · 1 h 10' },
-];
-
-const animerFiche = () => {
-  const fiche = document.querySelector('.fiche');
-  const lieu = document.getElementById('fiche-arrivee');
-  const mesure = document.getElementById('fiche-mesure');
-  const cta = document.getElementById('fiche-cta');
-  if (!fiche || !lieu || !mesure || !cta) return;
-
-  const appliquer = (trajet) => {
-    lieu.textContent = trajet.lieu;
-    mesure.textContent = trajet.mesure;
-    cta.dataset.wa = `Bonjour, je souhaite un forfait taxi : Le Puy-en-Velay vers ${trajet.lieu}.`;
-    cta.href = lienWhatsApp(cta.dataset.wa);
-  };
-
-  const sobre = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (sobre.matches) return;
-
-  let index = 0;
-  setInterval(() => {
-    index = (index + 1) % TRAJETS.length;
-    fiche.classList.add('fiche--change');
-    setTimeout(() => {
-      appliquer(TRAJETS[index]);
-      fiche.classList.remove('fiche--change');
-    }, 320);
-  }, 4200);
-};
-
 /* ── Devis : le formulaire ne fait que rédiger un message WhatsApp ── */
 const dateLisible = (valeur) => {
   if (!valeur) return '';
@@ -93,7 +56,6 @@ const brancherDevis = () => {
 };
 
 habillerLiens();
-animerFiche();
 brancherDevis();
 
 const annee = document.getElementById('annee');
